@@ -1,0 +1,17 @@
+.Product {
+    width: 78%;
+    margin-left: 11%;
+}
+
+.Product img {
+    width: 430px;
+    height: 313px;
+    border-radius: 30px;
+    display: block;
+    float: left;
+}
+
+.Product .Info {
+    float: right;
+    display: block;
+}

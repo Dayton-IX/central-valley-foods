@@ -1,0 +1,21 @@
+.Navbar {
+    margin-top: 10px;
+    margin-left: 20px;
+}
+
+.Navbar a {
+    font-size: 24px;
+    font-weight: lighter;
+    color: #B3B6B7;
+    text-decoration: none;
+    margin-right: 31px;
+}
+
+.Navbar .Active {
+    color: #3498DB;
+    border-bottom: 1px solid #3498DB;
+}
+
+.Navbar .Cart {
+    float: right;
+}

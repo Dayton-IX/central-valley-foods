@@ -12,14 +12,18 @@
     font-size: 64px;
     font-weight: lighter;
     margin: 0;
+    margin-top: -30px;
+
 }
 
 .Titlecard p {
     color: #787878;
     font-style: italic;
     font-size: 24px;
+    margin: 0;
 }
 
 .Titlecard hr {
-    width: 80%;
+    margin-top: 30px;
+    width: 987px;
 }

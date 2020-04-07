@@ -15,8 +15,17 @@ class Product extends Component {
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Id neque aliquam vestibulum morbi blandit cursus. Ornare arcu dui vivamus arcu. Vitae aliquet nec ullamcorper sit amet risus nullam eget felis. Fames ac turpis egestas maecenas pharetra convallis posuere morbi. Lectus quam id leo in vitae turpis. Quisque sagittis purus sit amet volutpat. Amet est placerat in egestas erat imperdiet sed euismod nisi. Risus commodo viverra maecenas accumsan lacus vel facilisis volutpat.</p>
                     <p><strong>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</strong></p>
                     <form className={classes.ProductForm}>
+                        <label for="size">Size</label>
+                        <select>
+                            <option>10 - 15 lbs</option>
+                            <option>16 - 21 lbs</option>
+                            <option>22 - 27 lbs</option>
+                            <option>28 - 33 lbs</option>
+                        </select>
+                        <br />
                         <label for="quantity">Quantity</label>
                         <input id="quantity" type="text" placeholder="0"></input>
+                        <br />
                         <button className={classes.AddToCart}>Add To Cart</button>
                     </form>
                 </div>                

@@ -50,6 +50,11 @@
     font-size: 18px;
 }
 
+.Product .Info .ProductForm select {
+    font-size: 18px;
+    margin-left: 57px;
+}
+
 .Product .Info .ProductForm input {
     width: 65px;
     height: 32px;

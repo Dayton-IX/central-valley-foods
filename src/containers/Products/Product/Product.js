@@ -33,10 +33,11 @@ class Product extends Component {
                     <form className={classes.ProductForm}>
                         <label for="size">Size:</label>
                         <select id="size">
-                            <option>10 - 15 lbs</option>
-                            <option>16 - 21 lbs</option>
-                            <option>22 - 27 lbs</option>
-                            <option>28 - 33 lbs</option>
+                            {this.productInfo.sizes.map(option => (
+                                <option key={option.id} value={option.id}>
+                                    {option.value}
+                                </option>
+                            ))}
                         </select>
                         <br />
                         <label for="quantity">Quantity:</label>

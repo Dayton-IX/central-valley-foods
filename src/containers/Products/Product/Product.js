@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import sucklingPig from '../../../assets/img/suckling-pig.jpeg';
 import classes from './Product.module.css';
+import Cart from '../../../assets/img/cart.png';
 
 class Product extends Component {
     render() {

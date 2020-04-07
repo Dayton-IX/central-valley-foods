@@ -6,7 +6,8 @@ class Products extends Component {
     render() {
         return (
             <div>
-                <Product />
+                <Product type="suckling" />
+                <Product type="roaster" />
             </div>
         )
     }

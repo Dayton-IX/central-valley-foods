@@ -19,7 +19,9 @@ class Product extends Component {
                 {id: 3, value: '22 - 27 lbs', price: 115.00},
                 {id: 4, value: '28 - 33 lbs', price: 125.00}
             ]
-        }
+        },
+        selectedSizeId: 1,
+        selectedQuantity: 1
     }
 
     productTypeHandler = () => {
@@ -87,7 +89,7 @@ class Product extends Component {
                         <label for="quantity">Quantity:</label>
                         <input id="quantity" type="text" placeholder="1" value="1"></input>
                         <br />
-                        <p id="total" className={classes.Total}>Total: <strong>$120.00</strong></p>
+                        <p id="total" className={classes.Total}>Total: <strong>${parseFloat(this.state.productInfo.sizes[this.state.selectedSizeId - 1].price * this.state.selectedQuantity).toFixed(2)}</strong></p>
                         <button className={classes.AddToCart}>Add To Cart</button>
                     </form>
                 </div>                

@@ -14,13 +14,13 @@ class Product extends Component {
                 bold: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
             },
             sizes: [
-                {id: 1, value: '10 - 15 lbs', price: 95.00},
-                {id: 2, value: '16 - 21 lbs', price: 110.00},
-                {id: 3, value: '22 - 27 lbs', price: 115.00},
-                {id: 4, value: '28 - 33 lbs', price: 125.00}
+                {id: 0, value: '10 - 15 lbs', price: 95.00},
+                {id: 1, value: '16 - 21 lbs', price: 110.00},
+                {id: 2, value: '22 - 27 lbs', price: 115.00},
+                {id: 3, value: '28 - 33 lbs', price: 125.00}
             ]
         },
-        selectedSizeId: 1,
+        selectedSizeId: 0,
         //     id: 1,
         //     value: '10 - 15 lbs',
         //     price: 95.00
@@ -39,10 +39,10 @@ class Product extends Component {
                         bold: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
                     },
                     sizes: [
-                        {id: 1, value: '10 - 15 lbs', price: 95.00},
-                        {id: 2, value: '16 - 21 lbs', price: 110.00},
-                        {id: 3, value: '22 - 27 lbs', price: 115.00},
-                        {id: 4, value: '28 - 33 lbs', price: 125.00}
+                        {id: 0, value: '10 - 15 lbs', price: 95.00},
+                        {id: 1, value: '16 - 21 lbs', price: 110.00},
+                        {id: 2, value: '22 - 27 lbs', price: 115.00},
+                        {id: 3, value: '28 - 33 lbs', price: 125.00}
                     ]
                 }
             })
@@ -56,10 +56,10 @@ class Product extends Component {
                         bold: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
                     },
                     sizes: [
-                        {id: 1, value: '34 - 39 lbs', price: 135.00},
-                        {id: 2, value: '40 - 45 lbs', price: 145.00},
-                        {id: 3, value: '46 - 51 lbs', price: 165.00},
-                        {id: 4, value: '52 - 60 lbs', price: 175.00}
+                        {id: 0, value: '34 - 39 lbs', price: 135.00},
+                        {id: 1, value: '40 - 45 lbs', price: 145.00},
+                        {id: 2, value: '46 - 51 lbs', price: 165.00},
+                        {id: 3, value: '52 - 60 lbs', price: 175.00}
                     ]
                 }
             })
@@ -73,16 +73,20 @@ class Product extends Component {
     onSizeChangeHandler = (event) => {
         console.log(event.target.value);
         const sizesArray = this.state.productInfo.sizes;
-        let sizeID = 1
+        let sizeID = 0
         for (let i = 0; i < sizesArray.length; i++) {
-            if (sizesArray[i].value === event.target.value) {
+            console.log('i: ' + i, 'Target: ' + event.target.value)
+            if (sizesArray[i].id == event.target.value) {
                 sizeID = i;
+                console.log('FOUND!' + sizeID)
+            } else {
+                console.log('Never found')
             }
         }
         console.log(sizeID)
 
         this.setState({selectedSizeId: sizeID});
-        console.log(this.state.selectedSizeId)
+        console.log(this.state.selectedSizeId);
     }
 
     onQuantChangeHandler = (event) => {

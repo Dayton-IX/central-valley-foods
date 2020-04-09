@@ -21,6 +21,10 @@ class Product extends Component {
             ]
         },
         selectedSizeId: 1,
+        //     id: 1,
+        //     value: '10 - 15 lbs',
+        //     price: 95.00
+        // },
         selectedQuantity: 1
     }
 
@@ -66,6 +70,26 @@ class Product extends Component {
         this.productTypeHandler();
     }
 
+    onSizeChangeHandler = (event) => {
+        console.log(event.target.value);
+        const sizesArray = this.state.productInfo.sizes;
+        let sizeID = 1
+        for (let i = 0; i < sizesArray.length; i++) {
+            if (sizesArray[i].value === event.target.value) {
+                sizeID = i;
+            }
+        }
+        console.log(sizeID)
+
+        this.setState({selectedSizeId: sizeID});
+        console.log(this.state.selectedSizeId)
+    }
+
+    onQuantChangeHandler = (event) => {
+        console.log(event.target.value)
+        this.setState({selectedQuantity: event.target.value});
+    }
+
     render() {
         return (
             <div className={classes.Product}>
@@ -77,8 +101,8 @@ class Product extends Component {
                     <p>{this.state.productInfo.text.normal}</p>
                     <p><strong>{this.state.productInfo.text.bold}</strong></p>
                     <form className={classes.ProductForm}>
-                        <label for="size">Size:</label>
-                        <select id="size">
+                        <label htmlFor="size">Size:</label>
+                        <select id="size" value={this.state.selectedSizeId} onChange={this.onSizeChangeHandler}>
                             {this.state.productInfo.sizes.map(option => (
                                 <option key={option.id} value={option.id}>
                                     {option.value}
@@ -86,10 +110,10 @@ class Product extends Component {
                             ))}
                         </select>
                         <br />
-                        <label for="quantity">Quantity:</label>
-                        <input id="quantity" type="text" placeholder="1" value="1"></input>
+                        <label htmlFor="quantity">Quantity:</label>
+                        <input id="quantity" type="text" value={this.state.selectedQuantity} onChange={e => this.onQuantChangeHandler(e)} ></input>
                         <br />
-                        <p id="total" className={classes.Total}>Total: <strong>${parseFloat(this.state.productInfo.sizes[this.state.selectedSizeId - 1].price * this.state.selectedQuantity).toFixed(2)}</strong></p>
+                        <p id="total" className={classes.Total}>Total: <strong>${parseFloat(this.state.productInfo.sizes[this.state.selectedSizeId].price * this.state.selectedQuantity).toFixed(2)}</strong></p>
                         <button className={classes.AddToCart}>Add To Cart</button>
                     </form>
                 </div>                

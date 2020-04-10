@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import sucklingPig from '../../../assets/img/suckling-pig.jpeg';
+import roasterPig from '../../../assets/img/roasterPig.jpg';
 import classes from './Product.module.css';
 
 class Product extends Component {
@@ -24,7 +25,6 @@ class Product extends Component {
         sizesList: true,
         selectedSizeId: 0,
         selectedQuantity: 1,
-        cart: []
     }
 
     productTypeHandler = () => {
@@ -49,7 +49,7 @@ class Product extends Component {
             this.setState({
                 productInfo: {
                     name: 'Roaster Pig',
-                    image: sucklingPig,
+                    image: roasterPig,
                     text: {
                         normal: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Id neque aliquam vestibulum morbi blandit cursus. Ornare arcu dui vivamus arcu. Vitae aliquet nec ullamcorper sit amet risus nullam eget felis. Fames ac turpis egestas maecenas pharetra convallis posuere morbi. Lectus quam id leo in vitae turpis. Quisque sagittis purus sit amet volutpat. Amet est placerat in egestas erat imperdiet sed euismod nisi. Risus commodo viverra maecenas accumsan lacus vel facilisis volutpat.',
                         bold: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
@@ -70,7 +70,7 @@ class Product extends Component {
     }
 
     onSizeChangeHandler = (event) => {
-        console.log(event.target.value);
+        // console.log(event.target.value);
         const sizesArray = this.state.productInfo.sizes;
         let sizeID = 0
         for (let i = 0; i < sizesArray.length; i++) {
@@ -98,7 +98,7 @@ class Product extends Component {
         var newObject = {...this.state.productInfo.sizes[this.state.selectedSizeId], quant: this.state.selectedQuantity, type: this.state.productInfo.name};
         // var newArray = this.state.cart.concat(newObject);
         this.props.onItemAdded(newObject);
-        console.log(newObject, this.props.cart, this.props.total);
+        // console.log(newObject, this.props.cart, this.props.total);
         event.preventDefault();
     }
 

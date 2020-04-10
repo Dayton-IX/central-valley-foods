@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 
 import sucklingPig from '../../../assets/img/suckling-pig.jpeg';
 import roasterPig from '../../../assets/img/roasterPig.jpg';
+import sausage from '../../../assets/img/sausage.jpg';
+import patties from '../../../assets/img/patties.jpg';
 import classes from './Product.module.css';
 
 class Product extends Component {
@@ -62,6 +64,36 @@ class Product extends Component {
                     ]
                 }
             })
+        } else if (this.props.type === 'sausage'){
+            this.setState({
+                productInfo: {
+                    name: 'Sausage',
+                    image: sausage,
+                    text: {
+                        normal: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Id neque aliquam vestibulum morbi blandit cursus. Ornare arcu dui vivamus arcu. Vitae aliquet nec ullamcorper sit amet risus nullam eget felis. Fames ac turpis egestas maecenas pharetra convallis posuere morbi. Lectus quam id leo in vitae turpis. Quisque sagittis purus sit amet volutpat. Amet est placerat in egestas erat imperdiet sed euismod nisi. Risus commodo viverra maecenas accumsan lacus vel facilisis volutpat.',
+                        bold: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+                    },
+                    sizes: [
+                        {id: 0, value: '1 lb', price: 2.75}
+                    ]
+                },
+                sizesList: false
+            })
+        } else if (this.props.type === 'patties'){
+            this.setState({
+                productInfo: {
+                    name: 'Fresh Pork Patties',
+                    image: patties,
+                    text: {
+                        normal: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Id neque aliquam vestibulum morbi blandit cursus. Ornare arcu dui vivamus arcu. Vitae aliquet nec ullamcorper sit amet risus nullam eget felis. Fames ac turpis egestas maecenas pharetra convallis posuere morbi. Lectus quam id leo in vitae turpis. Quisque sagittis purus sit amet volutpat. Amet est placerat in egestas erat imperdiet sed euismod nisi. Risus commodo viverra maecenas accumsan lacus vel facilisis volutpat.',
+                        bold: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+                    },
+                    sizes: [
+                        {id: 0, value: '1 lb', price: 2.25}
+                    ]
+                },
+                sizesList: false
+            })
         }
     }
 
@@ -103,25 +135,35 @@ class Product extends Component {
     }
 
     render() {
+        let sizeSelector = null;
+        let priceRange = parseFloat(this.state.productInfo.sizes[0].price).toFixed(2) + ' / LB';
+        if (this.state.sizesList) {
+            sizeSelector = (
+                <div>
+                    <label htmlFor="size">Size:</label>
+                    <select id="size" value={this.state.selectedSizeId} onChange={this.onSizeChangeHandler}>
+                        {this.state.productInfo.sizes.map(option => (
+                            <option key={option.id} value={option.id}>
+                                {option.value}
+                            </option>
+                        ))}
+                    </select>
+                    <br />
+                </div>
+            )
+            priceRange = parseFloat(this.state.productInfo.sizes[0].price).toFixed(2) + ' - ' + parseFloat(this.state.productInfo.sizes[this.state.productInfo.sizes.length - 1].price).toFixed(2);
+        }
         return (
             <div className={classes.Product}>
                 <img src={this.state.productInfo.image} alt={this.state.productInfo.name} />
                 <div className={classes.Info}>
                     <h4>{this.state.productInfo.name}</h4>
-                    <h3>${parseFloat(this.state.productInfo.sizes[0].price).toFixed(2)} - ${parseFloat(this.state.productInfo.sizes[this.state.productInfo.sizes.length - 1].price).toFixed(2)}</h3>
+                    <h3>${priceRange}</h3>
                     <hr align="left" />
                     <p>{this.state.productInfo.text.normal}</p>
                     <p><strong>{this.state.productInfo.text.bold}</strong></p>
                     <form onSubmit={this.onSubmitHandler} className={classes.ProductForm}>
-                        <label htmlFor="size">Size:</label>
-                        <select id="size" value={this.state.selectedSizeId} onChange={this.onSizeChangeHandler}>
-                            {this.state.productInfo.sizes.map(option => (
-                                <option key={option.id} value={option.id}>
-                                    {option.value}
-                                </option>
-                            ))}
-                        </select>
-                        <br />
+                        {sizeSelector}
                         <label htmlFor="quantity">Quantity:</label>
                         <input id="quantity" type="text" value={this.state.selectedQuantity} onChange={e => this.onQuantChangeHandler(e)} ></input>
                         <br />

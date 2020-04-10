@@ -8,6 +8,8 @@ class Products extends Component {
             <div>
                 <Product type="suckling" />
                 <Product type="roaster" />
+                <Product type="sausage" />
+                <Product type="patties" />
             </div>
         )
     }

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 import sucklingPig from '../../../assets/img/suckling-pig.jpeg';
 import classes from './Product.module.css';
@@ -95,9 +96,9 @@ class Product extends Component {
 
     onSubmitHandler = (event) => {
         var newObject = {...this.state.productInfo.sizes[this.state.selectedSizeId], quant: this.state.selectedQuantity, type: this.state.productInfo.name};
-        var newArray = this.state.cart.concat(newObject);
-        this.setState({ cart: newArray})
-        console.log(newArray, this.state.cart);
+        // var newArray = this.state.cart.concat(newObject);
+        this.props.onItemAdded(newObject);
+        console.log(newObject, this.props.cart, this.props.total);
         event.preventDefault();
     }
 
@@ -133,4 +134,17 @@ class Product extends Component {
     }
 };
 
-export default Product;
+const mapStateToProps = state => {
+    return {
+        cart: state.cart,
+        total: state.total
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        onItemAdded: (item) => dispatch({type: 'ADD', item: item})
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Product);

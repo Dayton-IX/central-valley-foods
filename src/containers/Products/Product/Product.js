@@ -20,12 +20,10 @@ class Product extends Component {
                 {id: 3, value: '28 - 33 lbs', price: 125.00}
             ]
         },
+        sizesList: true,
         selectedSizeId: 0,
-        //     id: 1,
-        //     value: '10 - 15 lbs',
-        //     price: 95.00
-        // },
-        selectedQuantity: 1
+        selectedQuantity: 1,
+        cart: []
     }
 
     productTypeHandler = () => {
@@ -75,23 +73,32 @@ class Product extends Component {
         const sizesArray = this.state.productInfo.sizes;
         let sizeID = 0
         for (let i = 0; i < sizesArray.length; i++) {
-            console.log('i: ' + i, 'Target: ' + event.target.value)
+            // console.log('i: ' + i, 'Target: ' + event.target.value)
+            // eslint-disable-next-line
             if (sizesArray[i].id == event.target.value) {
                 sizeID = i;
-                console.log('FOUND!' + sizeID)
-            } else {
-                console.log('Never found')
-            }
+                // console.log('FOUND!' + sizeID)
+            } 
+            // else {
+            //     // console.log('Never found')
+            // }
         }
-        console.log(sizeID)
-
+        // console.log(sizeID)
         this.setState({selectedSizeId: sizeID});
-        console.log(this.state.selectedSizeId);
+        // console.log(this.state.selectedSizeId);
     }
 
     onQuantChangeHandler = (event) => {
         console.log(event.target.value)
         this.setState({selectedQuantity: event.target.value});
+    }
+
+    onSubmitHandler = (event) => {
+        var newObject = {...this.state.productInfo.sizes[this.state.selectedSizeId], quant: this.state.selectedQuantity, type: this.state.productInfo.name};
+        var newArray = this.state.cart.concat(newObject);
+        this.setState({ cart: newArray})
+        console.log(newArray, this.state.cart);
+        event.preventDefault();
     }
 
     render() {
@@ -104,7 +111,7 @@ class Product extends Component {
                     <hr align="left" />
                     <p>{this.state.productInfo.text.normal}</p>
                     <p><strong>{this.state.productInfo.text.bold}</strong></p>
-                    <form className={classes.ProductForm}>
+                    <form onSubmit={this.onSubmitHandler} className={classes.ProductForm}>
                         <label htmlFor="size">Size:</label>
                         <select id="size" value={this.state.selectedSizeId} onChange={this.onSizeChangeHandler}>
                             {this.state.productInfo.sizes.map(option => (
@@ -118,7 +125,7 @@ class Product extends Component {
                         <input id="quantity" type="text" value={this.state.selectedQuantity} onChange={e => this.onQuantChangeHandler(e)} ></input>
                         <br />
                         <p id="total" className={classes.Total}>Total: <strong>${parseFloat(this.state.productInfo.sizes[this.state.selectedSizeId].price * this.state.selectedQuantity).toFixed(2)}</strong></p>
-                        <button className={classes.AddToCart}>Add To Cart</button>
+                        <button type="submit" className={classes.AddToCart}>Add To Cart</button>
                     </form>
                 </div>                
             </div>

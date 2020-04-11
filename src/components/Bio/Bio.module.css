@@ -1,0 +1,25 @@
+.Bio {
+    width: 900px;
+    display: flexbox;
+    align-self: center;
+    margin: auto;
+    margin-top: 30px;
+    margin-bottom: 100px;
+}
+
+.Bio h2 {
+    font-size: 36px;
+    font-weight: lighter;
+    text-align: center;
+}
+
+.Bio h3 {
+    font-size: 28px;
+    font-weight: lighter;
+    text-align: center;
+}
+
+.Bio p {
+    font-size: 20px;
+    font-weight: lighter;
+}

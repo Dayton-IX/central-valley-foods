@@ -7,7 +7,7 @@ const Navbar = (props) => {
     return (
         <nav className={classes.Navbar}>
             <NavLink to="/" exact activeClassName={classes.Active}>Home</NavLink>
-            <NavLink to="/shopping" activeClassName={classes.Active}>Shop Online</NavLink>
+            <NavLink to="/shopping" activeClassName={classes.Active}>Products</NavLink>
             <NavLink to="/contact" activeClassName={classes.Active}>Contact</NavLink>
             <NavLink to="/about" activeClassName={classes.Active}>About Us</NavLink>
 

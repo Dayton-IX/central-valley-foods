@@ -3,12 +3,13 @@
     margin-left: 20px;
 }
 
-.Navbar a {
+.Navbar a, .Navbar div {
     font-size: 24px;
     font-weight: lighter;
     color: #B3B6B7;
     text-decoration: none;
     margin-right: 31px;
+    cursor: pointer;
 }
 
 .Navbar .Active {

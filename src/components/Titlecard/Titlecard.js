@@ -7,7 +7,7 @@ const Titlecard = (props) => (
     <div className={classes.Titlecard}>
         <img className={classes.Logo} src={logo} alt="Pig"/>
         <h1>Central Valley Foods</h1>
-        <p>Site Tagline and or Motto</p>
+        <p>Over 80 years of service from the heart of Cache Valley</p>
         <hr />
     </div>
 );

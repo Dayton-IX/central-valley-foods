@@ -1,3 +1,7 @@
+:root {
+  scrollbar-width: thin;
+}
+
 body {
   background-color: #F7F9F9;
   margin: 0;

@@ -20,7 +20,7 @@ class Navbar extends Component {
         let navTitle = null;
         let shadow = {};
         window.addEventListener('scroll', (e) => {
-            console.log(window.pageYOffset);
+            // console.log(window.pageYOffset);
             if (window.pageYOffset > 250) {
                 shadow = {boxShadow: '10px 0px 30px #888888'}
                 navTitle = <NavLink to="/" exact className={classes.NavTitle}><img className={classes.Logo} src={logo} alt="Pig" />Central Valley Foods</NavLink>

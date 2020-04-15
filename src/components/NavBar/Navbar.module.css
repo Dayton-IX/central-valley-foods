@@ -26,3 +26,17 @@
 .Navbar .Cart {
     float: right;
 }
+
+.Navbar .NavTitle img {
+    width: 35px;
+    height: 35px;
+    margin-right: 10px;
+    align-items: center;
+    vertical-align: middle;
+}
+
+.Navbar .NavTitle {
+    color: black;
+    margin-left: 60px;
+    font-size: 30px;
+}

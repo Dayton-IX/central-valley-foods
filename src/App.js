@@ -6,6 +6,7 @@ import Navbar from './components/NavBar/Navbar';
 import Titlecard from './components/Titlecard/Titlecard';
 import Products from './containers/Products/Products';
 import Bio from './components/Bio/Bio';
+import Cart from './containers/Cart/Cart';
 
 function App() {
 	return (
@@ -20,6 +21,7 @@ function App() {
 					</div>
 				} />
 				<Route path='/shopping' component={Products} />
+				<Route path='/cart' component={Cart} />
 			</div>
 		</BrowserRouter>
 	)

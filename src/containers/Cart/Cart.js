@@ -13,10 +13,6 @@ import patties from '../../assets/img/patties.jpg';
 import classes from './Cart.module.css';
 
 class Cart extends Component {
-    itemRemoveHandler = (itemId) => {
-        this.props.onItemRemoved(itemId)
-    }
-
     render() {
         return (
             <div className={classes.Cart}>
@@ -34,7 +30,7 @@ class Cart extends Component {
                                 <hr />
                                 <h6>Quantity: {item.quant}</h6>
                                 <h5>Price: <strong>${parseFloat(item.price * item.quant).toFixed(2)}</strong></h5>
-                                <button className={classes.removeButton} >Remove</button>
+                                <button className={classes.removeButton} onClick={() => this.props.onItemRemoved(item.cartId, item.price)}>Remove</button>
                             </div>
                         </div>
                     ))}
@@ -53,7 +49,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        onItemRemoved: (itemId) => dispatch({type: 'REMOVE', itemId: itemId})
+        onItemRemoved: (itemId, itemPrice) => dispatch({type: 'REMOVE', itemId: itemId, price: itemPrice})
     }
 }
 

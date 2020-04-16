@@ -128,12 +128,11 @@ class Product extends Component {
     }
 
     onSubmitHandler = (event) => {
-        var newObject = {...this.state.productInfo.sizes[this.state.selectedSizeId], name: this.state.productInfo.name, image: this.state.productInfo.image, quant: this.state.selectedQuantity, type: this.state.productInfo.name, cartId: this.state.cartId};
+        var newObject = {...this.state.productInfo.sizes[this.state.selectedSizeId], name: this.state.productInfo.name, image: this.state.productInfo.image, quant: this.state.selectedQuantity, type: this.state.productInfo.name};
         // var newArray = this.state.cart.concat(newObject);
         this.props.onItemAdded(newObject);
         console.log(newObject, this.props.cart, this.props.total);
         event.preventDefault();
-        this.setState({cartId: this.state.cartId + 1})
     }
 
     render() {

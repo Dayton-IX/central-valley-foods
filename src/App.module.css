@@ -1,7 +1,8 @@
 .Mountains {
     margin-top: 40px;
-    width: 100vw;
+    width: 100%;
     height: 300px;
     object-fit: cover;
+    object-position: 0% 30%;
     margin-bottom: -30px;
 }

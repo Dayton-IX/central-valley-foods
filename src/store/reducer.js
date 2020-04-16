@@ -3,11 +3,13 @@ const initialState = {
     total: 0
 }
 
+let i = 0;
 const reducer = (state = initialState, action) => {
     switch (action.type){
         case 'ADD':
-            const newArray = state.cart.concat(action.item);
+            const newArray = state.cart.concat({...action.item, cartId: i});
             const newTotal = state.total + action.item.price
+            i++;
             return {
                 ...state,
                 cart: newArray,
@@ -16,7 +18,8 @@ const reducer = (state = initialState, action) => {
         case 'REMOVE':
             return {
                 ...state,
-                cart: state.cart.filter(id => id !== action.itemId)
+                cart: state.cart.filter(item => item.cartId !== action.itemId),
+                total: state.total - action.price
             }
         default:
             return state;

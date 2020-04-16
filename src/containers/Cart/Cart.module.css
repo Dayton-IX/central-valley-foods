@@ -107,12 +107,3 @@
     cursor: pointer;
     margin-top: 7px;
 }
-
-.TrashSVG {
-    
-    width: 20px;
-}
-
-.TrashPath {
-    fill: #e74c3c;
-}

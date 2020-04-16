@@ -13,17 +13,29 @@ function App() {
 	return (
 		<BrowserRouter>
 			<div>
-				<Navbar />
-				<Route path="/" exact render={() => <img className={classes.Mountains} src={mountains} alt="mountains"></img>} />
-				<Titlecard />
 				<Route path='/' exact render={() => 
 					<div>
+						<img className={classes.Mountains} src={mountains} alt="mountains"></img>
+						<Navbar scrollLength={300}/>
+						<Titlecard />
 						<Bio />
 						<Products />
 					</div>
 				} />
-				<Route path='/shopping' component={Products} />
-				<Route path='/cart' component={Cart} />
+				<Route path='/shopping' render={() => 
+					<div>
+						<Navbar alwaysSticky scrollLength={300}/>
+						<Titlecard />
+						<Products />
+					</div>
+				} />
+				<Route path='/cart' render={() => 
+					<div>
+						<Navbar alwaysSticky scrollLength={300}/>
+						<Titlecard />
+						<Cart />
+					</div>
+				} /> />
 			</div>
 		</BrowserRouter>
 	)

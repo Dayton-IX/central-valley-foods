@@ -137,9 +137,11 @@ class Product extends Component {
     }
 
     render() {
+        let quantText = "LBS";
         let sizeSelector = null;
         let priceRange = parseFloat(this.state.productInfo.sizes[0].price).toFixed(2) + ' / LB';
         if (this.state.sizesList) {
+            quantText = "Amount";
             sizeSelector = (
                 <div>
                     <label htmlFor="size">Size:</label>
@@ -166,7 +168,7 @@ class Product extends Component {
                     <p><strong>{this.state.productInfo.text.bold}</strong></p>
                     <form onSubmit={this.onSubmitHandler} className={classes.ProductForm}>
                         {sizeSelector}
-                        <label htmlFor="quantity">Quantity:</label>
+                        <label htmlFor="quantity">{quantText}:</label>
                         <input id="quantity" type="text" value={this.state.selectedQuantity} onChange={e => this.onQuantChangeHandler(e)} ></input>
                         <br />
                         <p id="total" className={classes.Total}>Total: <strong>${parseFloat(this.state.productInfo.sizes[this.state.selectedSizeId].price * this.state.selectedQuantity).toFixed(2)}</strong></p>

@@ -12,10 +12,15 @@ import patties from '../../assets/img/patties.jpg';
 import classes from './Cart.module.css';
 
 class Cart extends Component {
+    itemRemoveHandler = (itemId) => {
+        this.props.onItemRemoved(itemId)
+    }
+
     render() {
         return (
             <div className={classes.Cart}>
                 <h2>Your Cart</h2>
+                <h3 className={classes.Total}>Total: <strong>${parseFloat(this.props.total).toFixed(2)}</strong></h3>
                 <div className={classes.Items}>
                     {this.props.cart.map(item => (
                         <div className={classes.Item} key={item.id} >
@@ -25,6 +30,7 @@ class Cart extends Component {
                                 <hr />
                                 <h6>Quantity: {item.quant}</h6>
                                 <h5>Price: <strong>${parseFloat(item.price * item.quant).toFixed(2)}</strong></h5>
+                                <button className={classes.removeButton} >Remove</button>
                             </div>
                         </div>
                     ))}
@@ -43,7 +49,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        onItemAdded: (item) => dispatch({type: 'ADD', item: item})
+        onItemRemoved: (itemId) => dispatch({type: 'REMOVE', itemId: itemId})
     }
 }
 

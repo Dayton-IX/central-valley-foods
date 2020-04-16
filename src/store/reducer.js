@@ -13,6 +13,11 @@ const reducer = (state = initialState, action) => {
                 cart: newArray,
                 total: newTotal
             }
+        case 'REMOVE':
+            return {
+                ...state,
+                cart: state.cart.filter(id => id !== action.itemId)
+            }
         default:
             return state;
     }

@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+//eslint-disable-next-line
 import sucklingPig from '../../assets/img/suckling-pig.jpeg';
+//eslint-disable-next-line
 import roasterPig from '../../assets/img/roasterPig.jpg';
+//eslint-disable-next-line
 import sausage from '../../assets/img/sausage.jpg';
+//eslint-disable-next-line
 import patties from '../../assets/img/patties.jpg';
 import classes from './Cart.module.css';
 
@@ -12,15 +16,19 @@ class Cart extends Component {
         return (
             <div className={classes.Cart}>
                 <h2>Your Cart</h2>
-                <ul>
+                <div className={classes.Items}>
                     {this.props.cart.map(item => (
-                        <li key={item.id} >
+                        <div className={classes.Item} key={item.id} >
                             <img src={item.image} alt={item.name} />
-                            <h4>{item.name}</h4>
-                            <h4>{item.price * item.quant}</h4>
-                        </li>
+                            <div className={classes.ItemInfo}>
+                                <h4>{item.name}</h4>
+                                <hr />
+                                <h6>Quantity: {item.quant}</h6>
+                                <h5>Price: <strong>${parseFloat(item.price * item.quant).toFixed(2)}</strong></h5>
+                            </div>
+                        </div>
                     ))}
-                </ul>
+                </div>
             </div>
         )
     }

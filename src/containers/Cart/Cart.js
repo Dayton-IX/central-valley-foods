@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 
 //eslint-disable-next-line
 import sucklingPig from '../../assets/img/suckling-pig.jpeg';
@@ -19,8 +20,11 @@ class Cart extends Component {
     render() {
         return (
             <div className={classes.Cart}>
-                <h2>Your Cart</h2>
-                <h3 className={classes.Total}>Total: <strong>${parseFloat(this.props.total).toFixed(2)}</strong></h3>
+                <div className={classes.CartInfo}>
+                    <h2>Your Cart</h2>
+                    <h3 className={classes.Total}>Total: <strong>${parseFloat(this.props.total).toFixed(2)}</strong></h3>
+                    <NavLink to="/checkout" className={classes.CheckoutLink}>Checkout</NavLink>
+                </div>
                 <div className={classes.Items}>
                     {this.props.cart.map(item => (
                         <div className={classes.Item} key={item.id} >

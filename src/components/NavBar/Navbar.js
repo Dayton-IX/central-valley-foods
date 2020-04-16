@@ -34,7 +34,7 @@ class Navbar extends Component {
                 <NavLink to="/" exact activeClassName={classes.Active}>Home</NavLink>
                 <NavLink to="/shopping" activeClassName={classes.Active}>Products</NavLink>
                 <NavLink to="/contact" activeClassName={classes.Active}>Contact</NavLink>
-                <NavLink to="/about" activeClassName={classes.Active}>About Us</NavLink>
+                {/* <NavLink to="/about" activeClassName={classes.Active}>About Us</NavLink> */}
                 {navTitle}
                 <NavLink to="/cart" style={cartButtonStyle} className={classes.Cart} activeClassName={classes.Active}>Cart ( {this.props.cart.length} )</NavLink>
             </nav>

@@ -30,7 +30,7 @@ class Cart extends Component {
                                 <hr />
                                 <h6>Quantity: {item.quant}</h6>
                                 <h5>Price: <strong>${parseFloat(item.price * item.quant).toFixed(2)}</strong></h5>
-                                <button className={classes.removeButton} onClick={() => this.props.onItemRemoved(item.cartId, item.price)}>Remove</button>
+                                <button className={classes.RemoveButton} onClick={() => this.props.onItemRemoved(item.cartId, item.price)}>Remove</button>
                             </div>
                         </div>
                     ))}

@@ -97,3 +97,22 @@
 .ItemInfo h5 strong {
     color: #2ecc71;
 }
+
+.ItemInfo .RemoveButton {
+    background-color: transparent;
+    border: none;
+    font-size: 18px;
+    color: #e74c3c;
+    padding: 0;
+    cursor: pointer;
+    margin-top: 7px;
+}
+
+.TrashSVG {
+    
+    width: 20px;
+}
+
+.TrashPath {
+    fill: #e74c3c;
+}

@@ -7,7 +7,8 @@ import Titlecard from './components/Titlecard/Titlecard';
 import Products from './containers/Products/Products';
 import Bio from './components/Bio/Bio';
 import Cart from './containers/Cart/Cart';
-import mountains from './assets/img/mountain-placeholer-2.jpg'
+import Checkout from './containers/Checkout/Checkout';
+import mountains from './assets/img/mountain-placeholer-2.jpg';
 
 function App() {
 	return (
@@ -24,18 +25,31 @@ function App() {
 				} />
 				<Route path='/shopping' render={() => 
 					<div>
-						<Navbar alwaysSticky scrollLength={300}/>
+						<Navbar alwaysSticky scrollLength={0}/>
 						<Titlecard />
 						<Products />
 					</div>
 				} />
+				<Route path='/contact' render={() => 
+					<div>
+						<Navbar alwaysSticky scrollLength={0}/>
+						<Titlecard />
+					</div>
+				} />
 				<Route path='/cart' render={() => 
 					<div>
-						<Navbar alwaysSticky scrollLength={300}/>
+						<Navbar alwaysSticky scrollLength={0}/>
 						<Titlecard />
 						<Cart />
 					</div>
-				} /> />
+				} />
+				<Route path='/checkout' render={() => 
+					<div>
+						<Navbar alwaysSticky scrollLength={0}/>
+						<Titlecard />
+						<Checkout />
+					</div>
+				} />
 			</div>
 		</BrowserRouter>
 	)

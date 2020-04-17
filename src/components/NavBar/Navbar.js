@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import logo from '../../assets/img/pig.png';
 
 import classes from './Navbar.module.css';
-import Products from '../../containers/Products/Products';
 
 class Navbar extends Component {
     state = {

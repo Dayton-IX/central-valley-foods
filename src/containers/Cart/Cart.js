@@ -14,12 +14,16 @@ import classes from './Cart.module.css';
 
 class Cart extends Component {
     render() {
+        let checkoutButton = <p className={classes.NoItems}>There's Nothing Here Yet!</p>
+        if (this.props.total > 0) {
+            checkoutButton = <NavLink to="/checkout" className={classes.CheckoutLink}>Checkout</NavLink>
+        }
         return (
             <div className={classes.Cart}>
                 <div className={classes.CartInfo}>
                     <h2>Your Cart</h2>
                     <h3 className={classes.Total}>Total: <strong>${parseFloat(this.props.total).toFixed(2)}</strong></h3>
-                    <NavLink to="/checkout" className={classes.CheckoutLink}>Checkout</NavLink>
+                    {checkoutButton}
                 </div>
                 <div className={classes.Items}>
                     {this.props.cart.map(item => (

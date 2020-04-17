@@ -1,0 +1,36 @@
+.Checkout {
+    width: 877px;
+    align-self: center;
+    margin: auto;
+    margin-top: 30px;
+}
+
+.Checkout h2, .Checkout h3 {
+    text-align: center;
+}
+
+.Checkout h2 {
+    font-weight: lighter;
+    font-size: 36px;
+}
+
+.Checkout h3 {
+    font-weight: normal;
+    font-size: 28px;
+}
+
+.Checkout h3 strong {
+    color: #2ecc71;
+}
+
+.Items {
+    border: 1px solid grey;
+    border-radius: 5px;
+    text-align: left;
+    width: 250px;
+    align-self: center;
+    margin: auto;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 20px;
+}

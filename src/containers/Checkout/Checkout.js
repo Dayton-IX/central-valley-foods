@@ -13,6 +13,7 @@ class Checkout extends Component {
                 ))}
             </ol>
         }
+        // Only show form when items are more than 0
         return (
             <div className={classes.Checkout}>
                 <h2>Checkout</h2>

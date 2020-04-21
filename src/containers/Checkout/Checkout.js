@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import StripeCheckout from 'react-stripe-checkout';
 
 import classes from './Checkout.module.css';
-import axios from '../../axios-orders';
+import axios from '../../secret/axios-orders';
 import Input from '../../components/UI/Input/Input';
 import Spinner from '../../components/UI/Spinner/Spinner';
 
@@ -40,7 +40,7 @@ class Checkout extends Component {
                 elementType: 'input',
                 elementConfig: {
                     type: 'text',
-                    placeholder: 'city'
+                    placeholder: 'City'
                 },
                 value: '',
                 validation: {
@@ -195,8 +195,6 @@ class Checkout extends Component {
                     stripeKey="pk_test_rKdvFyD3qBqtMEBXgwog2rn000h80vhkZk"
                     label="Purchase Your Items"
                     amount={this.props.total * 100}
-                    shippingAddress
-                    zipCode
                     allowRememberMe={false}
                 />
             </div>

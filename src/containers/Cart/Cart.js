@@ -27,7 +27,7 @@ class Cart extends Component {
                 </div>
                 <div className={classes.Items}>
                     {this.props.cart.map(item => (
-                        <div className={classes.Item} key={item.id} >
+                        <div className={classes.Item} key={item.cartId} >
                             <img src={item.image} alt={item.name} />
                             <div className={classes.ItemInfo}>
                                 <h4>{item.name}</h4>

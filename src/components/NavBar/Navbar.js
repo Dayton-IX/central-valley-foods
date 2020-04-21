@@ -36,7 +36,7 @@ class Navbar extends Component {
             <nav className={this.state.scrolled ? classes.StickyNavbar : classes.Navbar}>
                 <NavLink to="/" exact className={classes.Link} activeClassName={classes.Active}>Home</NavLink>
                 <NavLink to="/shopping" className={classes.Link} activeClassName={classes.Active}>Products</NavLink>
-                <NavLink to="/contact" className={classes.Link} activeClassName={classes.Active}>Contact</NavLink>
+                {/* <NavLink to="/contact" className={classes.Link} activeClassName={classes.Active}>Contact</NavLink> */}
                 {/* <NavLink to="/about" activeClassName={classes.Active}>About Us</NavLink> */}
                 {this.state.scrolled ? <NavLink to="/" exact className={classes.NavTitle}><img className={classes.Logo} src={logo} alt="Pig" />Central Valley Foods</NavLink> : null}
                 <NavLink to="/cart" style={cartButtonStyle} className={classes.Cart} activeClassName={classes.CartActive}>Cart ( {this.props.cart.length} )</NavLink>

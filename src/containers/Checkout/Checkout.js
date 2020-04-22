@@ -6,6 +6,7 @@ import classes from './Checkout.module.css';
 import axios from '../../secret/axios-orders';
 import Input from '../../components/UI/Input/Input';
 import Spinner from '../../components/UI/Spinner/Spinner';
+import logo from '../../assets/img/pig.png'
 
 class Checkout extends Component {
     state = {
@@ -15,6 +16,19 @@ class Checkout extends Component {
                 elementConfig: {
                     type: 'text',
                     placeholder: 'Your Name'
+                },
+                value: '',
+                validation: {
+                    required: true
+                },
+                valid: false,
+                touched: false
+            },
+            email: {
+                elementType: 'input',
+                elementConfig: {
+                    type: 'email',
+                    placeholder: 'Your Email'
                 },
                 value: '',
                 validation: {
@@ -73,19 +87,6 @@ class Checkout extends Component {
                     required: true,
                     minLength: 5,
                     maxLength: 5
-                },
-                valid: false,
-                touched: false
-            },
-            email: {
-                elementType: 'input',
-                elementConfig: {
-                    type: 'email',
-                    placeholder: 'Your Email'
-                },
-                value: '',
-                validation: {
-                    required: true
                 },
                 valid: false,
                 touched: false
@@ -164,7 +165,7 @@ class Checkout extends Component {
             });
         }
         let form =(
-            <form onSubmit={this.orderHandler}>
+            <form onSubmit={this.orderHandler} className={classes.Form}>
                 {formElementsArray.map(formElement => (
                     <Input
                         key={formElement.id}
@@ -176,11 +177,23 @@ class Checkout extends Component {
                         touched={formElement.config.touched}
                     />
                 ))}
-                <button btnType="Success" disabled={!this.state.formIsValid} clicked={this.orderHandler}>ORDER</button>
             </form>
         );
         if (this.props.loading) {
             form = <Spinner />
+        }
+
+        let stripeButton = <p>Please Fill Out The Form Above</p>;
+        if (this.state.formIsValid){
+            stripeButton = <StripeCheckout 
+                token={this.orderHandler}
+                stripeKey="pk_test_rKdvFyD3qBqtMEBXgwog2rn000h80vhkZk"
+                name="Central Valley Foods"
+                image={logo}
+                label="Purchase Your Items"
+                amount={this.props.total * 100}
+                allowRememberMe={false}
+            />
         }
         
         return (
@@ -190,13 +203,9 @@ class Checkout extends Component {
                 {itemBox}
                 <h3>Total: <strong>${parseFloat(this.props.total).toFixed(2)}</strong></h3>
                 {form}
-                <StripeCheckout 
-                    token={this.orderHandler}
-                    stripeKey="pk_test_rKdvFyD3qBqtMEBXgwog2rn000h80vhkZk"
-                    label="Purchase Your Items"
-                    amount={this.props.total * 100}
-                    allowRememberMe={false}
-                />
+                <div className={classes.StripeButton}>
+                    {stripeButton}
+                </div>
             </div>
         )
     }

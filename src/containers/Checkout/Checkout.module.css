@@ -46,3 +46,19 @@
 .Item {
     margin-bottom: 3px;
 }
+
+.Form {
+    width: 800px;
+    align-self: center;
+    margin: auto;
+    margin-top: -20px;
+}
+
+.StripeButton {
+    float: right;
+    margin-right: 50px;
+}
+
+.StripeButton p {
+    color: #3498DB;
+}

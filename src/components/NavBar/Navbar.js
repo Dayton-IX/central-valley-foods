@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
-import logo from '../../assets/img/pig.png';
+// import logo from '../../assets/img/pig.png';
 
 import classes from './Navbar.module.css';
 
@@ -38,7 +38,7 @@ class Navbar extends Component {
                 <NavLink to="/shopping" className={classes.Link} activeClassName={classes.Active}>Products</NavLink>
                 {/* <NavLink to="/contact" className={classes.Link} activeClassName={classes.Active}>Contact</NavLink> */}
                 {/* <NavLink to="/about" activeClassName={classes.Active}>About Us</NavLink> */}
-                {this.state.scrolled ? <NavLink to="/" exact className={classes.NavTitle}><img className={classes.Logo} src={logo} alt="Pig" />Central Valley Foods</NavLink> : null}
+                {/* {this.state.scrolled ? <NavLink to="/" exact className={classes.NavTitle}><img className={classes.Logo} src={logo} alt="Pig" />Central Valley Foods</NavLink> : null} */}
                 <NavLink to="/cart" style={cartButtonStyle} className={classes.Cart} activeClassName={classes.CartActive}>Cart ( {this.props.cart.length} )</NavLink>
             </nav>
         )

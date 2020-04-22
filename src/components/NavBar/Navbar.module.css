@@ -67,3 +67,14 @@
     cursor: pointer;
     transition: all .5s;
 }
+
+@media screen and (max-width: 800px) {
+    .NavTitle {
+        display: none;
+        width: 0;
+    }
+    .StickyNavbar {
+        box-shadow: none;
+        position: relative;
+    }
+}

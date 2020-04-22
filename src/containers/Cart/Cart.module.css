@@ -107,3 +107,12 @@
     cursor: pointer;
     margin-top: 7px;
 }
+
+@media screen and (max-width: 1000px) {
+    .Cart {
+        width: 80%;
+    }
+    .Items {
+        display: block;
+    }
+}

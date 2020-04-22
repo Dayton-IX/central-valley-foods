@@ -93,3 +93,24 @@
     color: #2ecc71;
     margin-left: 46px;
 }
+
+@media screen and (max-width: 1000px) {
+    .Product {
+        width: 80%;
+    }
+    .Product img {
+        width: 274px;
+        height: 200px;
+    }
+    .Product .Info .ProductForm button:focus {
+        background-color: #3498DB;
+        color: white;
+        transition: all .05s;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .Product {
+        display: block;
+    }
+}

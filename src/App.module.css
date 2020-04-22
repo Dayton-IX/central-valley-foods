@@ -7,3 +7,9 @@
     margin: 0;
     align-self: center;
 }
+
+@media screen and (max-width: 500px){
+    .Mountains {
+        height: 200px;
+    }
+}

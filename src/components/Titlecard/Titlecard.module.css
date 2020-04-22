@@ -27,3 +27,29 @@
     margin-top: 30px;
     width: 987px;
 }
+
+@media screen and (max-width: 800px){
+    .Titlecard h1 {
+        font-size: 48px;
+    }
+    .Titlecard p {
+        font-size: 18px;
+    }
+    .Titlecard hr {
+        width: 500px;
+    }
+}
+
+@media screen and (max-width: 500px){
+    .Titlecard .Logo {
+        width: 82px;
+        height: 80px;
+        margin-bottom: 20px;
+    }
+    .Titlecard h1 {
+        font-size: 36px;
+    }
+    .Titlecard hr {
+        width: 300px;
+    }
+}

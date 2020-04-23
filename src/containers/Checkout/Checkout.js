@@ -122,6 +122,7 @@ class Checkout extends Component {
         }).catch(error => {
             console.log(error);
         });
+        
         this.setState({redirect: true})
     }
 

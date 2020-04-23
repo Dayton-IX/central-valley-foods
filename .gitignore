@@ -24,3 +24,5 @@ yarn-error.log*
 
 /src/server
 /src/secret
+
+/functions

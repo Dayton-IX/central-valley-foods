@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import StripeCheckout from 'react-stripe-checkout';
+import { Redirect } from 'react-router';
 
 import classes from './Checkout.module.css';
 import axios from 'axios';
@@ -92,7 +93,8 @@ class Checkout extends Component {
                 touched: false
             },
         },
-        formIsValid: false
+        formIsValid: false,
+        redirect: false
     }
 
     orderHandler = () => {
@@ -101,9 +103,18 @@ class Checkout extends Component {
         for (let formElementIdentifier in this.state.orderForm) {
             formData[formElementIdentifier] = this.state.orderForm[formElementIdentifier].value
         }
+        const itemsArray = [];
+        //eslint-disable-next-line
+        this.props.cart.map(item => {
+            itemsArray.push({
+                item: item.name,
+                quant: item.quant,
+                size: item.value
+            })
+        })
 
         axios.post(`https://cors-anywhere.herokuapp.com/https://central-valley-foods.firebaseio.com/orders.json`, {
-            items: {...this.props.cart},
+            items: itemsArray,
             total: this.props.total,
             orderForm: formData
         }).then(response => {
@@ -111,6 +122,7 @@ class Checkout extends Component {
         }).catch(error => {
             console.log(error);
         });
+        this.setState({redirect: true})
     }
 
     checkValidity(value, rules) {
@@ -164,27 +176,12 @@ class Checkout extends Component {
                 config: this.state.orderForm[key]
             });
         }
-        let form =(
-            <form onSubmit={this.orderHandler} className={classes.Form}>
-                {formElementsArray.map(formElement => (
-                    <Input
-                        key={formElement.id}
-                        elementType={formElement.config.elementType} 
-                        elementConfig={formElement.config.elementConfig}
-                        value={formElement.config.value} 
-                        invalid={!formElement.config.valid}
-                        changed={(event) => this.inputChangedHandler(event, formElement.id)}
-                        touched={formElement.config.touched}
-                    />
-                ))}
-            </form>
-        );
-        if (this.props.loading) {
-            form = <Spinner />
-        }
 
         let stripeButton = <p>Please Fill Out The Form Above</p>;
-        if (this.state.formIsValid){
+        if (this.props.cart.length === 0) {
+            stripeButton = null;
+        }
+        if (this.state.formIsValid && this.props.cart.length > 0){
             stripeButton = <StripeCheckout 
                 token={this.orderHandler}
                 stripeKey="pk_test_rKdvFyD3qBqtMEBXgwog2rn000h80vhkZk"
@@ -195,7 +192,34 @@ class Checkout extends Component {
                 email={this.state.orderForm.email.value}
             />
         }
-        
+
+        let form = null;
+        if (this.props.cart.length > 0){
+            form =(
+                <form onSubmit={this.orderHandler} className={classes.Form}>
+                    {formElementsArray.map(formElement => (
+                        <Input
+                            key={formElement.id}
+                            elementType={formElement.config.elementType} 
+                            elementConfig={formElement.config.elementConfig}
+                            value={formElement.config.value} 
+                            invalid={!formElement.config.valid}
+                            changed={(event) => this.inputChangedHandler(event, formElement.id)}
+                            touched={formElement.config.touched}
+                        />
+                    ))}
+                </form>
+            );
+        }
+        if (this.props.loading) {
+            form = <Spinner />
+        } 
+
+        let redirect = null
+        if (this.state.redirect) {
+            redirect = <Redirect to="/" />
+        }
+
         return (
             <div className={classes.Checkout}>
                 <h2>Checkout</h2>
@@ -206,6 +230,7 @@ class Checkout extends Component {
                 <div className={classes.StripeButton}>
                     {stripeButton}
                 </div>
+                {redirect}
             </div>
         )
     }

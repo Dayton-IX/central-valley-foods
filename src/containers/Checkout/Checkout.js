@@ -38,11 +38,11 @@ class Checkout extends Component {
                 valid: false,
                 touched: false
             },
-            street: {
+            address: {
                 elementType: 'input',
                 elementConfig: {
                     type: 'text',
-                    placeholder: 'Street'
+                    placeholder: 'Address'
                 },
                 value: '',
                 validation: {
@@ -192,6 +192,7 @@ class Checkout extends Component {
                 label="Purchase Your Items"
                 amount={this.props.total * 100}
                 email={this.state.orderForm.email.value}
+                allowRememberMe={false}
             />
         }
 

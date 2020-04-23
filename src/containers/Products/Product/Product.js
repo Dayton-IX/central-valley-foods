@@ -131,7 +131,7 @@ class Product extends Component {
         var newObject = {...this.state.productInfo.sizes[this.state.selectedSizeId], name: this.state.productInfo.name, image: this.state.productInfo.image, quant: this.state.selectedQuantity, type: this.state.productInfo.name};
         // var newArray = this.state.cart.concat(newObject);
         this.props.onItemAdded(newObject);
-        console.log(newObject, this.props.cart, this.props.total);
+        // console.log(newObject, this.props.cart, this.props.total);
         event.preventDefault();
     }
 

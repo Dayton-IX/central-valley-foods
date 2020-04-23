@@ -116,3 +116,13 @@
         display: block;
     }
 }
+
+@media screen and (max-width: 500px) {
+    .Item {
+        width: 300px
+    }
+    .Item img {
+        width: 140px;
+        height: 100px;
+    }
+}

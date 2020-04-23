@@ -62,3 +62,16 @@
 .StripeButton p {
     color: #3498DB;
 }
+
+@media screen and (max-width: 1000px) {
+    .Checkout {
+        width: 80%;
+    }
+    .Form {
+        width: 100%;
+    }
+    .StripeButton {
+        float: left;
+        margin-left:10px;
+    }
+}

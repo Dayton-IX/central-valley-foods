@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import StripeCheckout from 'react-stripe-checkout';
 
 import classes from './Checkout.module.css';
-import axios from '../../secret/axios-orders';
+import axios from 'axios';
 import Input from '../../components/UI/Input/Input';
 import Spinner from '../../components/UI/Spinner/Spinner';
 import logo from '../../assets/img/pig.png'
@@ -102,7 +102,7 @@ class Checkout extends Component {
             formData[formElementIdentifier] = this.state.orderForm[formElementIdentifier].value
         }
 
-        axios.post('/orders', {
+        axios.post(`https://cors-anywhere.herokuapp.com/https://central-valley-foods.firebaseio.com/orders.json`, {
             items: {...this.props.cart},
             total: this.props.total,
             orderForm: formData
@@ -192,7 +192,7 @@ class Checkout extends Component {
                 image={logo}
                 label="Purchase Your Items"
                 amount={this.props.total * 100}
-                allowRememberMe={false}
+                email={this.state.orderForm.email.value}
             />
         }
         

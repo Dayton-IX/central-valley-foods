@@ -21,6 +21,11 @@ const reducer = (state = initialState, action) => {
                 cart: state.cart.filter(item => item.cartId !== action.itemId),
                 total: state.total - action.price
             }
+        case 'REFRESH':
+            return {
+                cart: [],
+                total: 0
+            }
         default:
             return state;
     }

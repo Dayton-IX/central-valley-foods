@@ -4,7 +4,7 @@ import StripeCheckout from 'react-stripe-checkout';
 import { Redirect } from 'react-router';
 
 import classes from './Checkout.module.css';
-import axios from 'axios';
+import axios from '../../secret/axios-orders';
 import Input from '../../components/UI/Input/Input';
 import Spinner from '../../components/UI/Spinner/Spinner';
 import logo from '../../assets/img/pig.png'
@@ -113,7 +113,7 @@ class Checkout extends Component {
             })
         })
 
-        axios.post(`https://cors-anywhere.herokuapp.com/https://central-valley-foods.firebaseio.com/orders.json`, {
+        axios.post(`/orders.json`, {
             items: itemsArray,
             total: this.props.total,
             orderForm: formData
@@ -123,7 +123,8 @@ class Checkout extends Component {
             console.log(error);
         });
         
-        this.setState({redirect: true})
+        this.props.onCartRefresh();
+        this.setState({redirect: true});
     }
 
     checkValidity(value, rules) {
@@ -244,4 +245,10 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps)(Checkout);
+const mapDispatchToProps = dispatch => {
+    return {
+        onCartRefresh: (itemId, itemPrice) => dispatch({type: 'REFRESH'})
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Checkout);

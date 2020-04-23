@@ -68,7 +68,7 @@
     width: 211px;
     height: 45px;
     font-size: 24px;
-    font-weight: bold;
+    font-weight: lighter;
     border: 2px solid #3498DB;
     background-color: #F7F9F9;
     color: #3498DB;
@@ -92,6 +92,42 @@
     font-size: 24px;
     color: #2ecc71;
     margin-left: 46px;
+}
+
+.SizeGuide {
+    border: 1px solid grey;
+    background-color: white;
+    border-radius: 5px;
+    text-align: center;
+    width: 250px;
+    padding-bottom: 20px;
+}
+
+.SizeGuide p {
+    text-align: left;
+    margin: auto;
+    margin-left: 10px;
+    margin-bottom: 3px;
+}
+
+.SizeGuide p strong{
+    font-size: 24px;
+    font-weight: lighter;
+}
+
+.SizeGuide .SizeHr {
+    width: 80%;
+    height: 2px;
+    background-color: #B3B6B7;
+    margin-left: 5px;
+    margin-bottom: 5px;
+}
+
+.SizeGuide ul {
+    list-style-type: none;
+    width: 100%;
+    margin: auto;
+    text-align: left;
 }
 
 @media screen and (max-width: 1000px) {

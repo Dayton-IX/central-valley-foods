@@ -21,6 +21,9 @@ function App() {
 						<Titlecard />
 						<Bio />
 						<Products />
+						<div className={classes.IconCredit}>
+							<div className={classes.FlatIcon}>Pig icon made by <a href="https://www.flaticon.com/authors/monkik" title="monkik">monkik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+						</div>
 					</div>
 				} />
 				<Route path='/shopping' render={() => 

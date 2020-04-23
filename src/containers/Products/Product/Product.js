@@ -14,8 +14,8 @@ class Product extends Component {
             name: 'Suckling Pig',
             image: sucklingPig,
             text: {
-                normal: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Id neque aliquam vestibulum morbi blandit cursus. Ornare arcu dui vivamus arcu. Vitae aliquet nec ullamcorper sit amet risus nullam eget felis. Fames ac turpis egestas maecenas pharetra convallis posuere morbi. Lectus quam id leo in vitae turpis. Quisque sagittis purus sit amet volutpat. Amet est placerat in egestas erat imperdiet sed euismod nisi. Risus commodo viverra maecenas accumsan lacus vel facilisis volutpat.',
-                bold: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+                normal: 'A Whole Suckling Pig',
+                // bold: 'Price Guide: '
             },
             sizes: [
                 {id: 0, value: '10 - 15 lbs', price: 95.00},
@@ -37,8 +37,8 @@ class Product extends Component {
                     name: 'Suckling Pig',
                     image: sucklingPig,
                     text: {
-                        normal: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Id neque aliquam vestibulum morbi blandit cursus. Ornare arcu dui vivamus arcu. Vitae aliquet nec ullamcorper sit amet risus nullam eget felis. Fames ac turpis egestas maecenas pharetra convallis posuere morbi. Lectus quam id leo in vitae turpis. Quisque sagittis purus sit amet volutpat. Amet est placerat in egestas erat imperdiet sed euismod nisi. Risus commodo viverra maecenas accumsan lacus vel facilisis volutpat.',
-                        bold: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+                        normal: 'A Whole Suckling Pig',
+                        // bold: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
                     },
                     sizes: [
                         {id: 0, value: '10 - 15 lbs', price: 95.00},
@@ -139,6 +139,7 @@ class Product extends Component {
         let quantText = "LBS";
         let sizeSelector = null;
         let priceRange = parseFloat(this.state.productInfo.sizes[0].price).toFixed(2) + ' / LB';
+        let sizeGuide = null;
         if (this.state.sizesList) {
             quantText = "Amount";
             sizeSelector = (
@@ -155,6 +156,17 @@ class Product extends Component {
                 </div>
             )
             priceRange = parseFloat(this.state.productInfo.sizes[0].price).toFixed(2) + ' - ' + parseFloat(this.state.productInfo.sizes[this.state.productInfo.sizes.length - 1].price).toFixed(2);
+            sizeGuide = (
+                <div className={classes.SizeGuide}>
+                    <p><strong>Price Guide</strong></p>
+                    <div className={classes.SizeHr} />
+                    <ul>
+                        {this.state.productInfo.sizes.map(item => (
+                            <li key={item.id}>{item.value}: <strong>${parseFloat(item.price).toFixed(2)}</strong></li>
+                        ))}
+                    </ul>
+                </div>
+            )
         }
         return (
             <div className={classes.Product}>
@@ -164,7 +176,7 @@ class Product extends Component {
                     <h3>${priceRange}</h3>
                     <hr align="left" />
                     <p>{this.state.productInfo.text.normal}</p>
-                    <p><strong>{this.state.productInfo.text.bold}</strong></p>
+                    {sizeGuide}
                     <form onSubmit={this.onSubmitHandler} className={classes.ProductForm}>
                         {sizeSelector}
                         <label htmlFor="quantity">{quantText}:</label>

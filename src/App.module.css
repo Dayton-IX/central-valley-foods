@@ -1,11 +1,30 @@
 .Mountains {
-    width: 100vw;
+    width: 100%;
     height: 300px;
     object-fit: cover;
     object-position: 0% 30%;
     padding: 0;
     margin: 0;
     align-self: center;
+}
+
+.IconCredit {
+    width: 100%;
+    height: 50px;
+    background-color: #212f3c;
+    
+}
+
+.FlatIcon {
+    margin-top: 13px;
+    margin-right: 10px;
+    float: right;
+    color: rgb(196, 196, 196);
+}
+
+.FlatIcon a {
+    text-decoration: none;
+    color: #2e86c1;
 }
 
 @media screen and (max-width: 500px){

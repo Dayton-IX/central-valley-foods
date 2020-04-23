@@ -3,7 +3,7 @@
     padding-left: 20px;
     padding-bottom: 12px;
     top: 0;
-    width: 100%;
+    width: 100vw;
     background-color: #F7F9F9;
     transition: all .5s;
     /* background-color: white; */

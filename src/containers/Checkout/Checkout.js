@@ -4,7 +4,8 @@ import StripeCheckout from 'react-stripe-checkout';
 import { Redirect } from 'react-router';
 
 import classes from './Checkout.module.css';
-import axios from '../../secret/axios-orders';
+import axiosO from '../../secret/axios-orders';
+import axiosM from '../../secret/axios-mailing';
 import Input from '../../components/UI/Input/Input';
 import Spinner from '../../components/UI/Spinner/Spinner';
 import logo from '../../assets/img/pig.png'
@@ -113,7 +114,7 @@ class Checkout extends Component {
             })
         })
 
-        axios.post(`/orders.json`, {
+        axiosO.post(`/orders.json`, {
             items: itemsArray,
             total: this.props.total,
             orderForm: formData
@@ -122,6 +123,29 @@ class Checkout extends Component {
         }).catch(error => {
             console.log(error);
         });
+
+        axiosM.post(`/sendMail?dest=${this.state.orderForm.email.value}`).then(response => {
+            console.log(response);
+        }).catch(error => {
+            console.log(error);
+        });
+
+        const orderItems = [];
+        //eslint-disable-next-line
+        this.props.cart.map(item => {
+            orderItems.push(`${item.name} x${item.quant} ${item.value}`);
+        })
+
+        const orderAddress = `Customer: ${this.state.orderForm.name.value} ${this.state.orderForm.email.value}. Address: ${this.state.orderForm.address.value}, ${this.state.orderForm.city.value}, ${this.state.orderForm.state.value}. ZIP: ${this.state.orderForm.zipCode.value}.`
+
+        axiosM.post(`/sendOrder`, {
+            items: orderItems.join(' || '),
+            address: orderAddress
+        }).then(response => {
+            console.log(response);
+        }).catch(error => {
+            console.log(error);
+        })
         
         this.props.onCartRefresh();
         this.setState({redirect: true});

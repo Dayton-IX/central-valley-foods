@@ -1,6 +1,7 @@
 const initialState = {
     cart: [],
-    total: 0
+    total: 0,
+    ordered: false
 }
 
 let i = 0;
@@ -24,7 +25,8 @@ const reducer = (state = initialState, action) => {
         case 'REFRESH':
             return {
                 cart: [],
-                total: 0
+                total: 0,
+                ordered: true
             }
         default:
             return state;

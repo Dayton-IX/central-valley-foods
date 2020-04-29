@@ -175,7 +175,7 @@ class Product extends Component {
                     <h4>{this.state.productInfo.name}</h4>
                     <h3>${priceRange}</h3>
                     <hr align="left" />
-                    <p>{this.state.productInfo.text.normal}</p>
+                    {/* <p>{this.state.productInfo.text.normal}</p> */}
                     {sizeGuide}
                     <form onSubmit={this.onSubmitHandler} className={classes.ProductForm}>
                         {sizeSelector}

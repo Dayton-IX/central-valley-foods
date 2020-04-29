@@ -8,7 +8,8 @@ import axiosO from '../../secret/axios-orders';
 import axiosM from '../../secret/axios-mailing';
 import Input from '../../components/UI/Input/Input';
 import Spinner from '../../components/UI/Spinner/Spinner';
-import logo from '../../assets/img/pig.png'
+import logo from '../../assets/img/pig.png';
+import { stripeLiveP } from '../../secret/api-keys';
 
 class Checkout extends Component {
     state = {
@@ -210,7 +211,7 @@ class Checkout extends Component {
         if (this.state.formIsValid && this.props.cart.length > 0){
             stripeButton = <StripeCheckout 
                 token={this.orderHandler}
-                stripeKey="pk_test_rKdvFyD3qBqtMEBXgwog2rn000h80vhkZk"
+                stripeKey={stripeLiveP}
                 name="Central Valley Foods"
                 image={logo}
                 label="Purchase Your Items"

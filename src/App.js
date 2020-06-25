@@ -21,6 +21,7 @@ class App extends Component {
 							<img className={classes.Mountains} src={mountains} alt="mountains"></img>
 							<Navbar scrollLength={300}/>
 							{this.props.ordered ? <h2 className={classes.OrderSuccess} >Your order has been placed, check your email!</h2> : null}
+							<h2 className={classes.TestSite}>This is a test version of the site, no payment processing will be made and no orders will be shipped.</h2>
 							<Titlecard />
 							<Bio />
 							<Products />

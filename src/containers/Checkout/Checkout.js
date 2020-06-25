@@ -211,7 +211,7 @@ class Checkout extends Component {
         if (this.state.formIsValid && this.props.cart.length > 0){
             stripeButton = <StripeCheckout 
                 token={this.orderHandler}
-                stripeKey={stripeLiveP}
+                stripeKey='pk_test_20Nho73dObiGAHnxsisM56P400Ct5sRO4e'
                 name="Central Valley Foods"
                 image={logo}
                 label="Purchase Your Items"
